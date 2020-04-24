@@ -16,21 +16,24 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import ru.otus.test1.di.DaggerMainComponent
 import ru.otus.test1.entity.ImageData
+import javax.inject.Inject
 
 
 class MainActivity : AppCompatActivity() {
 
-    private val adapter = ListDelegationAdapter<List<ImageData>>(
-        imageDelegate { openDetailActivity(it) }
-    )
+    @Inject
+    lateinit var service:Api
+
+    @Inject
+    lateinit var  adapter : ListDelegationAdapter<List<ImageData>>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         onViewCreated()
-
-        val service = ApiService.makeRetrofitService()
         CoroutineScope(IO).launch {
             val result = service.getImages()
             Log.d("", result.body().toString())
@@ -56,22 +59,7 @@ class MainActivity : AppCompatActivity() {
         adapter.notifyDataSetChanged()
     }
 
-    private fun imageDelegate(itemClickListener: (Int) -> Unit) =
-        adapterDelegate<ImageData, ImageData>(R.layout.image_item) {
-            val image: ImageView = findViewById(R.id.imageView)
-            itemView.setOnClickListener { itemClickListener.invoke(item.id) }
-            bind { diffPayloads ->
-                Glide
-                    .with(image.context)
-                    .load(item.download_url)
-                    .centerCrop()
-                    .into(image)
-            }
-        }
 
-    private fun openDetailActivity(id: Int) {
-        val intent = Intent(this, DetailActivity::class.java)
-        intent.putExtra(DetailActivity.ARG_ID, id)
-        startActivity(intent)
-    }
+
+
 }
