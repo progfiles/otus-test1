@@ -10,6 +10,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import ru.otus.test1.entity.ImageData
+import ru.otus.test1.net.ApiService
+import ru.otus.test1.utils.action
 
 class DetailActivity : AppCompatActivity() {
 

@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import ru.otus.test1.Api
+import ru.otus.test1.net.Api
 import javax.inject.Singleton
 
 @Module

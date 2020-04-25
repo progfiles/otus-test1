@@ -1,15 +1,11 @@
 package ru.otus.test1
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
-import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegate
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -18,13 +14,14 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import ru.otus.test1.di.DaggerMainComponent
 import ru.otus.test1.entity.ImageData
+import ru.otus.test1.net.Api
 import javax.inject.Inject
 
 
 class MainActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var service:Api
+    lateinit var service: Api
 
     @Inject
     lateinit var  adapter : ListDelegationAdapter<List<ImageData>>

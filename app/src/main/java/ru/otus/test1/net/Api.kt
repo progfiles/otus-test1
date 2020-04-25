@@ -1,4 +1,4 @@
-package ru.otus.test1
+package ru.otus.test1.net
 
 import retrofit2.Response
 import retrofit2.http.GET

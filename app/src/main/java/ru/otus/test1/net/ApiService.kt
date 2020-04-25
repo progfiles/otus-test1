@@ -1,4 +1,4 @@
-package ru.otus.test1
+package ru.otus.test1.net
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

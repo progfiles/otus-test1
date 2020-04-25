@@ -7,17 +7,13 @@ import ru.otus.test1.di.DaggerInjectorDispatcher
 
 class App: Application() {
 
-
-
     override fun onCreate() {
         super.onCreate()
         appComponent = DaggerAppComponent
             .builder()
             .application(this)
             .build()
-
         registerActivityLifecycleCallbacks(DaggerInjectorDispatcher())
-
     }
 
     companion object{

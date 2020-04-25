@@ -1,2 +1,5 @@
 include ':app'
 rootProject.name='test1'
+include ':core_api'
+include ':core_impl'
+include ':core'

@@ -1,4 +1,4 @@
-package ru.otus.test1
+package ru.otus.test1.utils
 
 import ru.otus.test1.entity.ImageData
 
